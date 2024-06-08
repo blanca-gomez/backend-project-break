@@ -1,0 +1,10 @@
+extends layouts   
+block content 
+    .products 
+        each product in products
+            .product-card 
+                img(src=`${product.imagen}`, alt=product.nombre)
+                h2= product.nombre
+                p= product.descripcion
+                p= `${product.precio}`
+                a(href = `/products/${product._id}`) Detalles del producto

@@ -6,14 +6,20 @@ const express = require ('express');
 const app = express();
 const PORT = 3000;
 const {dbConnection} = require('./config/db');
-const routes = require('./routes/productRoutes')
+const routes = require('./routes/productRoutes');
+const path = require('path')
 
 app.use(express.json()); /*formato json() */
 app.use(express.urlencoded({extended: true}));/*formato url-encoded */
+app.use(express.static('public'));
 
-app.use('/', routes)
+app.set('views', path.join(__dirname,'views'));
+app.set('view engine', 'pug');
+
+app.use('/', routes);
 
 dbConnection();
+
 app.get('/', (req,res) => {
     res.send('pagina de prueba')
 })
