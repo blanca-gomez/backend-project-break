@@ -3,7 +3,7 @@ block content
     .products 
         each product in products
             .product-card 
-                img(src=`${product.imagen}`, alt=product.nombre)
+                img(src= product.imagen, alt='Zapatillas')
                 h2= product.nombre
                 p= product.descripcion
                 p= `${product.precio}`
