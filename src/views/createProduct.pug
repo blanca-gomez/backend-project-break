@@ -1,0 +1,33 @@
+extends layouts
+block content
+    h1 Crear un nuevo producto
+    form(action='/dashboard', method='POST')
+        div
+            label(for="nombre") Nombre:
+            input(type="nombre" id="nombre" name="nombre" required)
+    
+        div
+            label(for="descripcion") Descripcion:
+            textarea(id="descripcion" name="descripcion" required)
+            
+        div
+            label(for="categoria") Categoria:
+            textarea(id="categoria" name="categoria" required)
+            
+        div
+            label(for="talla") Talla:
+            textarea(id="talla" name="talla" required)
+            
+        div
+            label(for="precio") Precio:
+            input(type="text" id="precio" name="precio" required)
+            
+        div
+            label(for="imagen") Imagen:
+            input(type="text" id="imagen" name="imagen" required)
+    
+        button(type="submit") Crear producto:
+        
+                
+                
+                

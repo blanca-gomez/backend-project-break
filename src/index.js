@@ -7,14 +7,15 @@ const app = express();
 const PORT = 3000;
 const {dbConnection} = require('./config/db');
 const routes = require('./routes/productRoutes');
-const path = require('path')
+const path = require('path');
+const methodOverride = require('method-override');//soportar métodos PUT y DELETE
 
 app.use(express.json()); /*formato json() */
 app.use(express.urlencoded({extended: true}));/*formato url-encoded */
 app.use(express.static('public'));
+app.use(methodOverride('_method'))//middleware method override
 
 app.set('views', path.join(__dirname,'views'));
-app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug');
 
 app.use('/', routes);

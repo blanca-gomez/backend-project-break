@@ -1,0 +1,29 @@
+extends layouts 
+block content
+    h1 Actualizar producto
+        form(action=`/dashboard/:id`, method='POST')
+            input(type='hidden', name='id', value=product._id)
+            div
+                label(for="name") Nombre:
+                input(type="text" id="name" name="name" value=product.nombre required)
+    
+            div
+                label(for="description") Descripción:
+                textarea(id="descripcion" name="descripcion" required)=product.descripcion
+            div
+                label(for="categoria") Categoria:
+                textarea(id="Categoria" name="Categoria" required)=product.categoria
+            
+            div
+                label(for="talla") Talla:
+                textarea(id="talla" name="talla" required)=product.talla
+            
+            div
+                label(for="price") Precio:
+                input(type="text" id="precio" name="precio" value=product.precio required)
+            
+            div
+                label(for="image") Imagen:
+                input(type="text" id="imagen" name="imagen" value=product.imagen required)
+            div
+            button(type="submit") Actualizar producto
