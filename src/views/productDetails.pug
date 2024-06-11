@@ -6,6 +6,10 @@ block content
     img(src= product.imagen, alt= product.nombre)
     p= product.descripcion
     p= `Precio: ${product.precio}`
+    if success === 'update'
+      p Producto actualizado con éxito.
+    else if success === 'delete'
+      p Producto eliminado con éxito.
     if isDashboard
       form(action=`/dashboard/edit/${product._id}`, method='GET')
         button(type='submit') Editar

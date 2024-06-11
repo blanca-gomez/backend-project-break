@@ -1,0 +1,14 @@
+extends layouts 
+block content 
+    h1 Mi armario
+    a(href='/dashboard/new')
+        button(type=button) Agregar nuevo producto 
+        each product in products 
+            div
+                h2= product.nombre
+                img(src= product.imagen, alt=product.imagen)
+                p= product.descripcion
+                p= `${product.precio}`
+                a(href=`/dashboard/products/${product._id}`)
+                    button(type=button) Ver producto
+    a(href = `/`) Volver a la página principal             

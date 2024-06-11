@@ -1,0 +1,18 @@
+extends layouts
+block content  
+    h1 ¡Bienvenido a tu armario online! 
+        nav 
+            ul 
+                li 
+                    a(href='/products') Todos los productos 
+                li
+                    a(href='/dashboard/products') Mis productos
+                li
+                    a(href='/products/category/Camisetas') Camisetas
+                li
+                    a(href='/products/category/Accesorios') Accesorios
+                li
+                    a(href='/products/category/Pantalones') Pantalones
+                li
+                    a(href='/products/category/Zapatos') Zapatos
+    img(src='https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', alt='imagen portada', class='principal-image')

@@ -22,8 +22,5 @@ app.use('/', routes);
 
 dbConnection();
 
-app.get('/', (req,res) => {
-    res.send('pagina de prueba')
-})
 
 app.listen(PORT,() => console.log(`server started in port ${PORT}`))

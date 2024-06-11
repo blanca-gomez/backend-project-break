@@ -1,6 +1,6 @@
 extends layouts 
 block content
-    h1 Actualizar producto
+    h2 Actualizar producto
         form(action=`/dashboard/:id`, method='POST')
             input(type='hidden', name='id', value=product._id)
             div
@@ -27,3 +27,5 @@ block content
                 input(type="text" id="imagen" name="imagen" value=product.imagen required)
             div
             button(type="submit") Actualizar producto
+        if success
+            h1 ¡Producto actualizado con éxito!

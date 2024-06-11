@@ -8,7 +8,7 @@ const showProducts = async (req,res) => {
         const products = await Product.find({});
         res.render('products', {products : products})
     }catch (error){
-        res.status(500).render('error', { message: error.message });
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -21,7 +21,7 @@ const showProductById = async (req,res) => {
         }
         res.render('productDetails', {product, isDashboard : false})
     }catch (error){
-         res.status(500).render('error', { message: error.message });
+         res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -31,7 +31,7 @@ const createProduct = async (req,res) => {
         res.redirect(`/dashboard/products/${product._id}`)
 
     }catch (error){
-        res.status(500).render('error', { message: error.message });
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -46,10 +46,10 @@ const updateProduct = async (req,res) => {
         if(!product){
             return res.status(404).render('error', { message: 'Producto no encontrado' });
         }
-        res.redirect(`/dashboard/edit/${product._id}`)
+        res.redirect(`/dashboard/products/${id}?success=update`);
     }
     catch(error){
-        res.status(500).render('error', { message: error.message });
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -60,10 +60,10 @@ const showEditProduct = async (req,res) => {
         if (!product) {
             return res.status(404).render('error', { message: 'Producto no encontrado' });
         }
-        res.render('updateProduct', {product})
+        res.render('updateProduct', { product, success: false });
         
     }catch (error){
-        res.status(500).render('error', { message: error.message });
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -72,12 +72,12 @@ const deleteProduct = async (req,res) => {
         const {id} = req.params;
         const product = await Product.findByIdAndDelete(id);
         if(!product){
-            return res.status(404).json({message : "Product not found"})
+            return res.status(404).render('error', { message: 'Producto no encontrado' });
         }
-        res.status(200).json({message : "Product delete successfully"})
+        res.redirect(`/dashboard/products/${id}?success=delete`);
     }
     catch(error){
-        res.status(500).json({message : error.message})
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -86,33 +86,21 @@ const showProductsByCategory = async (req,res) => {
         const {categoria} = req.params;
         const products = await Product.find({categoria});
         if(products.length === 0){
-            return res.status(404).send('<h1>Producto no encontrado</h1>')
+            return res.status(404).render('error', { message: 'Producto no encontrado' });
         }
-        let productListHTML = "<h1>Productos en la categoría " + categoria + "</h1>";
-        productListHTML += "<ul>";
-        products.forEach(product => {
-            productListHTML += "<li>" + product.nombre + " - " + product.descripcion + " - " + product.precio + "</li>";
-        });
-        productListHTML += "</ul>";
-        res.status(200).send(productListHTML)
+        res.render('productsByCategory', {products, categoria})
 
     }catch (error){
-        res.status(500).send("<h1>Error al obtener los productos</h1>");
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
 const showAllProducts = async (req,res) => {
     try{
         const products = await Product.find({})
-        let productListHTML = "<h1>Catálogo de Productos</h1><ul>";
-        products.forEach(product => {
-            productListHTML += "<li><strong>Nombre:</strong> " + product.nombre + "<br><strong>Descripción:</strong> " + product.descripcion + "<br><strong>Precio:</strong> " + product.precio + "</li>";
-        });
-        productListHTML += "</ul>";
-        res.status(200).send(productListHTML)
-
+        res.render('showAllProducts', {products})
     }catch (error){
-        res.status(500).send("<h1>Error al obtener los productos</h1>");
+        res.status(500).render('error', { message: 'Ha ocurrido un error' });
     }
 }
 
@@ -125,7 +113,7 @@ const showProductDetail = async (req,res) => {
         }
         res.render('productDetails', {product, isDashboard : true})
     }catch (error){
-        res.status(500).json({ message: error.message });
+        res.status(500).render('error', { message: 'Ha ocurrido un error'});
     }
 }
 

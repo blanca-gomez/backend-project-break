@@ -1,0 +1,61 @@
+/*INDEX.PUG*/
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+nav ul{
+    padding:0;
+    margin:0
+}
+nav ul li {
+    list-style-type: none;
+    text-align: center;
+    display: inline;
+    margin-right:20px;
+}
+
+a{
+    color:black;
+    font-size: 1.5rem;
+}
+
+.principal-image{
+    display: block;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+/*PRODUCTS.PUG*/
+.products {
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: center;
+  }
+.product-card {
+    flex: 0 1 calc(25% - 20px);
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    margin: 50px;
+    background-color: blue;
+}
+.product-card img {
+    max-width: 150px;
+}
+
+.product-card h2 {
+    margin-top: 10px; 
+}
+  
+.product-card p {
+    margin-top: 5px; 
+}
+  
+.product-card button {
+    margin-top: 10px; 
+}
+.link-return{
+    position: fixed;
+    bottom:10px;
+    right: 10px;
+}
