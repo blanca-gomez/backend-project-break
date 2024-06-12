@@ -9,6 +9,7 @@ const {dbConnection} = require('./config/db');
 const routes = require('./routes/productRoutes');
 const path = require('path');
 const methodOverride = require('method-override');//soportar métodos PUT y DELETE
+const errors = require('./middlewares/error')
 
 app.use(express.json()); /*formato json() */
 app.use(express.urlencoded({extended: true}));/*formato url-encoded */
@@ -19,6 +20,7 @@ app.set('views', path.join(__dirname,'views'));
 app.set('view engine', 'pug');
 
 app.use('/', routes);
+app.use(errors);
 
 dbConnection();
 

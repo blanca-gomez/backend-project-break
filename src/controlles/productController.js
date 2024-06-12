@@ -3,12 +3,12 @@
 
 const Product = require ('../models/Product.js');
 
-const showProducts = async (req,res) => {
+const showProducts = async (req,res,next) => {
     try{
         const products = await Product.find({});
         res.render('products', {products : products})
-    }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+    }catch(error){
+        next(error)
     }
 }
 
@@ -21,7 +21,7 @@ const showProductById = async (req,res) => {
         }
         res.render('productDetails', {product, isDashboard : false})
     }catch (error){
-         res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -29,9 +29,8 @@ const createProduct = async (req,res) => {
     try{
         const product = await Product.create(req.body);
         res.redirect(`/dashboard/products/${product._id}`)
-
     }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -49,7 +48,7 @@ const updateProduct = async (req,res) => {
         res.redirect(`/dashboard/products/${id}?success=update`);
     }
     catch(error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -57,13 +56,13 @@ const showEditProduct = async (req,res) => {
     try{
         const { id } = req.params;
         const product = await Product.findById(id);
-        if (!product) {
+        if (!product) { 
             return res.status(404).render('error', { message: 'Producto no encontrado' });
         }
         res.render('updateProduct', { product, success: false });
         
     }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -77,7 +76,7 @@ const deleteProduct = async (req,res) => {
         res.redirect(`/dashboard/products/${id}?success=delete`);
     }
     catch(error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -91,7 +90,7 @@ const showProductsByCategory = async (req,res) => {
         res.render('productsByCategory', {products, categoria})
 
     }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -100,7 +99,7 @@ const showAllProducts = async (req,res) => {
         const products = await Product.find({})
         res.render('showAllProducts', {products})
     }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error' });
+        next(error)
     }
 }
 
@@ -113,7 +112,7 @@ const showProductDetail = async (req,res) => {
         }
         res.render('productDetails', {product, isDashboard : true})
     }catch (error){
-        res.status(500).render('error', { message: 'Ha ocurrido un error'});
+        next(error)
     }
 }
 
