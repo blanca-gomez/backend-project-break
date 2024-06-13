@@ -19,24 +19,24 @@ router.get('/', (req, res) => {
     res.render('index');
 });
 
-router.get('/products', showProducts);//todos los productos sin UPDATE y DELETE
+router.get('/products', showProducts);
 
-router.get('/products/:id', showProductById);//el producto por ID
+router.get('/products/:id', showProductById);
 
-router.get('/dashboard/edit/:id', showEditProduct);//actualizar el producto
+router.get('/dashboard/edit/:id', showEditProduct);
 
-router.post('/dashboard', createProduct);//ruta POST para crear
+router.post('/dashboard', createProduct);
 
-router.get('/dashboard/new',showNewProduct);//ruta para crear y mostrar nuevo producto
+router.get('/dashboard/new',showNewProduct);
 
-router.post('/dashboard/:id',updateProduct );//ruta POST para actualizar
+router.post('/dashboard/:id',updateProduct );
 
-router.delete('/dashboard/:id',deleteProduct);//ruta DELETE para borrar
+router.delete('/dashboard/:id',deleteProduct);
 
 router.get('/products/category/:categoria', showProductsByCategory);
 
 router.get('/dashboard/products', showAllProducts );
 
-router.get('/dashboard/products/:id', showProductDetail);//todos los productos con UPDATE y DELETE
+router.get('/dashboard/products/:id', showProductDetail);
 
 module.exports = router;
