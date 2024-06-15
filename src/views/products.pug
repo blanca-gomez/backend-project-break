@@ -1,12 +1,12 @@
-extends layouts   
-block content 
-    .products 
+extends layouts
+
+block content
+    .products
         each product in products
-            .product-card 
-                img(src= product.imagen, alt=product.imagen)
+            .product-card
+                img(src=product.imagen, alt=product.imagen)
                 h2= product.nombre
                 p= product.descripcion
                 p= `${product.precio}`
-                a(href = `/products/${product._id}`)
+                a(href=`/products/${product._id}`)
                     button(type='submit') Detalles del producto
-        a(href = `/` class='link-return') Volver a la página principal 

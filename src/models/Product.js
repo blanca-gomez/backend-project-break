@@ -1,7 +1,3 @@
-/**
- * Archivo que contendrá la definición del esquema del producto utilizando Mongoose.
- */
-
 const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({

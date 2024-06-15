@@ -1,0 +1,12 @@
+extends layouts
+
+block content
+  h1 Inicio de Sesión
+  form(action='/auth/signin', method='POST')
+    label(for='email') Correo Electrónico:
+    input(type='email', id='email', name='email', required)
+    br
+    label(for='password') Contraseña:
+    input(type='password', id='password', name='password', required)
+    br
+    button(type='submit') Iniciar Sesión

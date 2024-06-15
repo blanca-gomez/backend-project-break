@@ -1,23 +1,51 @@
-/*INDEX.PUG*/
-h1 {
-    text-align: center;
-    font-size: 3rem;
+body {
+    background-color: #f0f0f0;
 }
-nav ul{
-    padding:0;
-    margin:0
-}
-nav ul li {
-    list-style-type: none;
-    text-align: center;
-    display: inline;
-    margin-right:20px;
-}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+  }
+  
 
-a{
+  header h1 {
+    margin-left: 40%;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+
+  header .user-nav {
+    font-size: 14px;
+    margin-left: auto;
+    text-decoration:dashed;
+ }
+ 
+  nav {
+    background-color: #e0e0e0;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
     color:black;
-    font-size: 1.5rem;
-}
+    font-weight: bold;
+    font-size: 20px; 
+  }
 
 .principal-image{
     display: block;
@@ -28,34 +56,42 @@ a{
 /*PRODUCTS.PUG*/
 .products {
     display: flex;
-    flex-wrap: wrap;  
+    flex-wrap: wrap;
     justify-content: center;
-  }
-.product-card {
-    flex: 0 1 calc(25% - 20px);
-    display: inline-block;
-    text-align: center;
-    width: 100px;
-    margin: 50px;
-    background-color: blue;
+    gap: 20px; 
 }
+
+.product-card {
+    flex: 0 1 calc(25% - 20px); 
+    text-align: center;
+    margin: 20px; 
+    padding: 10px; 
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
 .product-card img {
-    max-width: 150px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px; 
 }
 
 .product-card h2 {
-    margin-top: 10px; 
+    margin: 10px 0; 
 }
-  
+
 .product-card p {
-    margin-top: 5px; 
+    margin-bottom: 5px; 
 }
-  
+
 .product-card button {
     margin-top: 10px; 
 }
-.link-return{
+
+.link-return {
     position: fixed;
-    bottom:10px;
+    bottom: 10px;
     right: 10px;
 }

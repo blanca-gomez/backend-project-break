@@ -1,11 +1,13 @@
-extends layouts 
+extends layouts
+
 block content
     h1 #{categoria}
-    ul 
-        each product in products 
-            li 
-                h3=product.nombre
-                img(src= product.imagen, alt=product.imagen)
-                p=product.descripcion 
-                p='Precio: '+ product.precio
-    a(href = `/`) Volver a la página principal 
+    .products
+        each product in products
+            .product-card
+                img(src=product.imagen, alt=product.imagen)
+                h2= product.nombre
+                p= product.descripcion
+                p= `${product.precio}`
+                a(href=`/products/${product._id}`)
+                    button(type='submit') Detalles del producto

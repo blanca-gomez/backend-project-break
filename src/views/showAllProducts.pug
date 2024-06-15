@@ -1,14 +1,15 @@
-extends layouts 
-block content 
+extends layouts
+
+block content
     h1 Mi armario
     a(href='/dashboard/new')
-        button(type=button) Agregar nuevo producto 
+        button(type='button') Agregar nuevo producto
+    .products
         each product in products 
-            div
+            .product-card
                 h2= product.nombre
                 img(src= product.imagen, alt=product.imagen)
                 p= product.descripcion
                 p= `${product.precio}`
                 a(href=`/dashboard/products/${product._id}`)
-                    button(type=button) Ver producto
-    a(href = `/`) Volver a la página principal             
+                    button(type='button') Ver producto

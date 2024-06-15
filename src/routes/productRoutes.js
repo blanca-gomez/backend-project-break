@@ -14,7 +14,10 @@ const {showProducts,
      showAllProducts,
      showProductDetail
     } = require ('../controlles/productController.js');
-    
+
+const { verifyToken } = require ('../middlewares/authJwt.js')
+
+
 router.get('/', (req, res) => {
     res.render('index');
 });
@@ -25,17 +28,17 @@ router.get('/products/:id', showProductById);
 
 router.get('/dashboard/edit/:id', showEditProduct);
 
-router.post('/dashboard', createProduct);
+router.post('/dashboard', verifyToken, createProduct);
 
-router.get('/dashboard/new',showNewProduct);
+router.get('/dashboard/new',verifyToken,showNewProduct);
 
-router.post('/dashboard/:id',updateProduct );
+router.post('/dashboard/:id', verifyToken, updateProduct );
 
-router.delete('/dashboard/:id',deleteProduct);
+router.delete('/dashboard/:id',verifyToken, deleteProduct);
 
 router.get('/products/category/:categoria', showProductsByCategory);
 
-router.get('/dashboard/products', showAllProducts );
+router.get('/dashboard/products', verifyToken, showAllProducts );
 
 router.get('/dashboard/products/:id', showProductDetail);
 

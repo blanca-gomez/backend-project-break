@@ -2,18 +2,19 @@ extends layouts
 
 block content
   if product
-    h1= product.nombre
-    img(src= product.imagen, alt= product.nombre)
-    p= product.descripcion
-    p= `Precio: ${product.precio}`
-    if success === 'update'
-      p Producto actualizado con éxito.
-    else if success === 'delete'
-      p Producto eliminado con éxito.
-    if isDashboard
-      form(action=`/dashboard/edit/${product._id}`, method='GET')
-        button(type='submit') Editar
-      form(action=`/dashboard/${product._id}?_method=DELETE`, method='POST')
-        button(type='submit') Eliminar
-  else
-    h1 Producto no encontrado
+    .product-card
+      h1= product.nombre
+      img(src= product.imagen, alt= product.nombre)
+      p= product.descripcion
+      p= `Precio: ${product.precio}`
+      if success === 'update'
+        p Producto actualizado con éxito.
+      else if success === 'delete'
+        p Producto eliminado con éxito.
+      if isDashboard
+        form(action=`/dashboard/edit/${product._id}`, method='GET')
+          button(type='submit') Editar
+        form(action=`/dashboard/${product._id}?_method=DELETE`, method='POST')
+          button(type='submit') Eliminar
+      else
+        h1 Producto no encontrado
